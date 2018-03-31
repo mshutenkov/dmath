@@ -1,6 +1,33 @@
 from PyQt5 import QtGui
 
 
+class NaturalValidator(QtGui.QValidator):
+    def validate(self, string, pos):
+        if not string:
+            return 1, string, pos
+
+        result = 2 if string.isdecimal() else 0
+        return result, string, pos
+
+
+class IntegerValidator(QtGui.QValidator):
+    nval = NaturalValidator()
+
+    def validate(self, string, pos):
+        if not string or string == '-':
+            return 1, string, pos
+
+        if string.startswith('-'):
+            result = self.nval.validate(string[1:], pos)[0]
+        else:
+            result = self.nval.validate(string, pos)[0]
+        return result, string, pos
+
+    def fixup(self, string):
+        if string == '-':
+            return '-1'
+
+
 class RationalValidator(QtGui.QValidator):
     def validate(self, string, pos):
         if not string:
