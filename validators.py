@@ -75,39 +75,36 @@ class RationalValidator(QtGui.QValidator):
 class PolynomValidator(QtGui.QValidator):
     rval = RationalValidator()
 
+    def validate_elem(self, string):
+        if not string:
+            return 1
+        if 'x' not in string:
+            return self.rval.validate(string, None)[0]
+        if string.count('x') > 1:
+            return 0
+        coef, deg = string.split('x')
+
+        result = 2
+        if coef:
+            result = min(result, self.rval.validate(coef, None)[0])
+
+        if deg:
+            try:
+                n = int(deg)
+            except:
+                result = 0
+            else:
+                if n < 0:
+                    result = 0
+        return result
+
+
     def validate(self, string, pos):
         tmp = string.replace(' ', '').replace('-', '+').split('+')
 
         result = 2
         for d in tmp:
-            if not d:
-                result = min(result, 1)
-                continue
-
-            if 'x' not in d:
-                tmp = self.rval.validate(d, None)
-                result = min(tmp[0], result)
-                continue
-
-            if d.count('x') > 1:
-                result = 0
-                break
-
-            coef, deg = d.split('x')
-            if coef:
-                tmp = self.rval.validate(coef, pos)
-                result = min(tmp[0], result)
-            else:
-                result = 1 if result > 1 else result
-
-            if deg:
-                try:
-                    n = int(deg)
-                except:
-                    result = 0
-                else:
-                    if n < 0:
-                        result = 0
+            result = min(result, self.validate_elem(d))
 
         return result, string, pos
 
