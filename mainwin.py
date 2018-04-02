@@ -410,8 +410,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_btn_q_add_released(self):
         try:
             q1 = parser.rational(self.line_q_q1.text())
-            q1 = parser.rational(self.line_q_q1.text())
-            result = rational.ADD_QQ_Q(q1)
+            q2 = parser.rational(self.line_q_q2.text())
+            result = rational.ADD_QQ_Q(q1, q2)
             self.add_history_record('%s + %s = %s' % (
                 pretty.rational(q1),
                 pretty.rational(q2),
@@ -423,8 +423,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_btn_q_sub_released(self):
         try:
             q1 = parser.rational(self.line_q_q1.text())
-            q1 = parser.rational(self.line_q_q1.text())
-            result = rational.SUB_QQ_Q(q1)
+            q2 = parser.rational(self.line_q_q2.text())
+            result = rational.SUB_QQ_Q(q1, q2)
             self.add_history_record('%s - %s = %s' % (
                 pretty.rational(q1),
                 pretty.rational(q2),
@@ -437,8 +437,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_btn_q_mul_released(self):
         try:
             q1 = parser.rational(self.line_q_q1.text())
-            q1 = parser.rational(self.line_q_q1.text())
-            result = rational.MUL_QQ_Q(q1)
+            q2 = parser.rational(self.line_q_q2.text())
+            result = rational.MUL_QQ_Q(q1, q2)
             self.add_history_record('%s * %s = %s' % (
                 pretty.rational(q1),
                 pretty.rational(q2),
@@ -451,8 +451,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_btn_q_div_released(self):
         try:
             q1 = parser.rational(self.line_q_q1.text())
-            q1 = parser.rational(self.line_q_q1.text())
-            result = rational.DIV_QQ_Q(q1)
+            q2 = parser.rational(self.line_q_q2.text())
+            result = rational.DIV_QQ_Q(q1, q2)
             self.add_history_record('%s / %s = %s' % (
                 pretty.rational(q1),
                 pretty.rational(q2),
@@ -464,4 +464,163 @@ class MainWindow(QtWidgets.QMainWindow):
     #############################################
     # Polynom
     #############################################
+
+    def on_btn_p_add_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.ADD_PP_P(p1, p2)
+            self.add_history_record('%s + %s = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_sub_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.SUB_PP_P(p1, p2)
+            self.add_history_record('(%s) - (%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_mulq_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            q = parser.rational(self.line_p_q.text())
+            result = polynom.MUL_PQ_P(p1, q)
+            self.add_history_record('(%s) * %s = %s' % (
+                pretty.polynom(p1),
+                pretty.rational(q),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_mulxk_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            k = int(self.line_p_k.text())
+            result = polynom.MUL_Pxk_P(p1, k)
+            self.add_history_record('(%s) * x^%d = %s' % (
+                pretty.polynom(p1),
+                k,
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_led_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            result = polynom.LED_P_Q(p1)
+            self.add_history_record('Led(%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_deg_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            result = polynom.DEG_P_N(p1)
+            self.add_history_record('Deg(%s) = %d' % (
+                pretty.polynom(p1),
+                result,
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_fac_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            result = polynom.FAC_P_N(p1)
+            self.add_history_record('Fac(%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_mul_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.MUL_PP_P(p1, p2)
+            self.add_history_record('(%s) * (%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_div_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.DIV_PP_P(p1, p2)
+            self.add_history_record('(%s) / (%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_mod_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.MOD_PP_P(p1, p2)
+            self.add_history_record('(%s) % (%s) = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_gcf_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            p2 = parser.polynom(self.line_p_p2.text())
+            result = polynom.GCF_PP_P(p1, p2)
+            self.add_history_record('НОД((%s), (%s)) = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(p2),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_der_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            result = polynom.DER_P_P(p1)
+            self.add_history_record('(%s)\' = %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_p_nmr_released(self):
+        try:
+            p1 = parser.polynom(self.line_p_p1.text())
+            result = polynom.NMR_P_P(p1)
+            self.add_history_record('%s -> %s' % (
+                pretty.polynom(p1),
+                pretty.polynom(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
 
