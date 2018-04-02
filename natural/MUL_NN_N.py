@@ -12,7 +12,7 @@ def MUL_NN_N(number1, number2):
 
     for i in range(number2[0]):
         # Умножаем первое число на i цифру второго и на 10^i
-        to_add = MUL_ND_N(MUL_Nk_N(number1, number2[1][i]))
+        to_add = MUL_Nk_N(MUL_ND_N(number1, number2[1][i]), i)
         # Добавляем к результату
         result = ADD_NN_N(result, to_add)
 
