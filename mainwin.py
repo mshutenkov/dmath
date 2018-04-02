@@ -263,6 +263,100 @@ class MainWindow(QtWidgets.QMainWindow):
         except Exception as e:
             on_exception(self, e)
 
+    def on_btn_z_poz_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            result = integer.POZ_Z_D(z1)
+            if result == 2:
+                sign = '>'
+            elif result == 0:
+                sign = '='
+            else:
+                sign = '<'
+
+            self.add_history_record('%d %s 0' % (
+                common.Z_to_num(z1),
+                sign,
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_mulm_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            result = integer.MUL_ZM_Z(z1)
+            self.add_history_record('%d * (-1) = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_add_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            z2 = common.num_to_Z(int(self.line_z_z2.text()))
+            result = integer.ADD_ZZ_Z(z1, z2)
+            self.add_history_record('%d + %d = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(z2),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_sub_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            z2 = common.num_to_Z(int(self.line_z_z2.text()))
+            result = integer.SUB_ZZ_Z(z1, z2)
+            self.add_history_record('%d - %d = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(z2),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_mul_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            z2 = common.num_to_Z(int(self.line_z_z2.text()))
+            result = integer.MUL_ZZ_Z(z1, z2)
+            self.add_history_record('%d * %d = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(z2),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_div_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            z2 = common.num_to_Z(int(self.line_z_z2.text()))
+            result = integer.DIV_ZZ_Z(z1, z2)
+            self.add_history_record('%d / %d = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(z2),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_z_mod_released(self):
+        try:
+            z1 = common.num_to_Z(int(self.line_z_z1.text()))
+            z2 = common.num_to_Z(int(self.line_z_z2.text()))
+            result = integer.MOD_ZZ_Z(z1, z2)
+            self.add_history_record('%d %% %d = %d' % (
+                common.Z_to_num(z1),
+                common.Z_to_num(z2),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
     #############################################
     # Rational
     #############################################
