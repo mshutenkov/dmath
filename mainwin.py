@@ -3,6 +3,8 @@ from PyQt5 import QtWidgets, QtGui, uic
 from validators import NaturalValidator, IntegerValidator, \
         RationalValidator, PolynomValidator
 import common
+import parser
+import pretty
 
 import natural
 import integer
@@ -360,6 +362,104 @@ class MainWindow(QtWidgets.QMainWindow):
     #############################################
     # Rational
     #############################################
+
+    def on_btn_q_red_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.RED_Q_Q(q1)
+            self.add_history_record('%s = %s' % (
+                pretty.rational(q1),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_q_int_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.INT_Q_B(q1)
+            self.add_history_record('%s - %sцелое' % (
+                pretty.rational(q1),
+                '' if result else 'не ',
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_q_transzq_released(self):
+        try:
+            z = common.num_to_Z(int(self.line_q_z.text()))
+            result = rational.TRANS_Z_Q(z)
+            self.add_history_record('%d = %s' % (
+                common.Z_to_num(z),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_q_transqz_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.TRANS_Q_Z(q1)
+            self.add_history_record('%s = %d' % (
+                pretty.rational(q1),
+                common.Z_to_num(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_q_add_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.ADD_QQ_Q(q1)
+            self.add_history_record('%s + %s = %s' % (
+                pretty.rational(q1),
+                pretty.rational(q2),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+
+    def on_btn_q_sub_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.SUB_QQ_Q(q1)
+            self.add_history_record('%s - %s = %s' % (
+                pretty.rational(q1),
+                pretty.rational(q2),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+        pass
+
+    def on_btn_q_mul_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.MUL_QQ_Q(q1)
+            self.add_history_record('%s * %s = %s' % (
+                pretty.rational(q1),
+                pretty.rational(q2),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
+        pass
+
+    def on_btn_q_div_released(self):
+        try:
+            q1 = parser.rational(self.line_q_q1.text())
+            q1 = parser.rational(self.line_q_q1.text())
+            result = rational.DIV_QQ_Q(q1)
+            self.add_history_record('%s / %s = %s' % (
+                pretty.rational(q1),
+                pretty.rational(q2),
+                pretty.rational(result),
+                ))
+        except Exception as e:
+            on_exception(self, e)
 
     #############################################
     # Polynom
