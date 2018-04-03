@@ -18,8 +18,8 @@ def RED_Q_Q(number):
     # Числитель и знаменятель делятся на найденый ранее НОД
     # Перед делением НОД и знаменатель преобразуется из натурального в целое
     gcf = TRANS_N_Z(a)
-    N = DIV_ZZ_Z(number[0], gfc)
-    M = DIV_ZZ_Z(TRANS_N_Z(number[1]), gfc)
+    N = DIV_ZZ_Z(number[0], gcf)
+    M = DIV_ZZ_Z(TRANS_N_Z(number[1]), gcf)
 
     # В результате новый знаменатель преобразуется из целого в натураьное
     result = [N, TRANS_Z_N(M)]

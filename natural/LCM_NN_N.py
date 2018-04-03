@@ -1,4 +1,4 @@
-from natural import DIV_NN_N, GCF_NN_N
+from natural import DIV_NN_N, GCF_NN_N, MUL_NN_N
 
 
 def LCM_NN_N(number1, number2):
