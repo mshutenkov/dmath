@@ -15,7 +15,7 @@ def MUL_PQ_P(polynom, num):
     else:
         result = [polynom[0], []]
         #Умножаем каждый коэффициент на это число
-        for i in range(result[0]):
+        for i in range(result[0] + 1):
             result[1].append(MUL_QQ_Q(polynom[1][i], num))
 
     # Возвращаем полученный многочлен      

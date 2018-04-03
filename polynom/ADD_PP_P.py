@@ -18,12 +18,12 @@ def ADD_PP_P(polynom1, polynom2):
 
     # Складываем общие коэффициенты
     i = 0
-    while i < less[0]:
+    while i < less[0] + 1:
         result[1][i] = ADD_QQ_Q(result[1][i], less[1][i])
         i += 1
 
     # Удалаем нули старших коэффициентов
-    result = down_p(result)
+    down_p(result)
 
     # Возвращаем полученный многочлен      
     return result

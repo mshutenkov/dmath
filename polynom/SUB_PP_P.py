@@ -18,7 +18,7 @@ def SUB_PP_P(polynom1, polynom2):
 
     # Вычитаем коэффициенты
     i = 0
-    while i < polynom2[0]:
+    while i < polynom2[0] + 1:
         result[1][i] = SUB_QQ_Q(result[1][i], polynom2[1][i])
         i+=1
 
