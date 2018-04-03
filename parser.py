@@ -7,11 +7,14 @@ def rational(string):
                 int(string.split('/')[0]),
                 int(string.split('/')[1]),
                 )
-    else:
-        return common.rat_to_Q(
-                int(string),
-                1
-                )
+    if string == '-':
+        return common.rat_to_Q(-1, 1)
+    if string == '+':
+        return common.rat_to_Q(1, 1)
+    return common.rat_to_Q(
+            int(string),
+            1
+            )
 
 
 def polynom(string):
@@ -19,6 +22,8 @@ def polynom(string):
     tmp = tmp.split('|')
     result = [0, [common.rat_to_Q(0, 1)]]
     for p in tmp:
+        if not p:
+            continue
         if 'x' not in p:
             coef = rational(p)
             result[1][0] = ADD_QQ_Q(coef, result[1][0])
