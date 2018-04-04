@@ -100,7 +100,12 @@ class PolynomValidator(QtGui.QValidator):
 
 
     def validate(self, string, pos):
-        tmp = string.replace(' ', '').replace('-', '+').split('+')
+        tmp = string.replace(' ', '')
+
+        if '--' in tmp or '++' in tmp or '-+' in tmp or '+-' in tmp:
+            return 0, string, pos
+
+        tmp = tmp.replace('-', '+').split('+')
 
         result = 2
         for d in tmp:
