@@ -1,6 +1,7 @@
 """
 Вспомогательные функции
 """
+from integer import POZ_Z_D
 
 
 def num_to_N(number):
@@ -100,7 +101,7 @@ def coef_to_P(coefs):
     в многочлен. Коэффициенты в прямом порядке
     [ (1, 1), (2, 1), (3, 1) ]  ->  x^2 + 2x + 3
     """
-    result = [0, []]
+    result = [-1, []]
     for c in reversed(coefs):
         q = rat_to_Q(*c)
         result[1].append(q)
@@ -132,13 +133,8 @@ def down_p(polynom):
     Удаление нулевых старших коэффициентов
     Пока старший коэффициент равен нулю, то удаляет его и понижает степень.
     """
-    i = polynom[0] - 1
-    while i >= 0 and polynom[1][i][0] == rat_to_Q(0, 1):
-        polynom[0] -= 1
-        del polynom[1][i]
-        i -= 1
 
-    # Если были удалены все коэффициенты
-    if (polynom[0] == 0):
-        polynom[1].append(rat_to_Q(0, 1))
+    while POZ_Z_D(polynom[1][-1][0]) == 0 and polynom[0] > 0:
+        polynom[0] -= 1
+        del polynom[1][-1]
 
