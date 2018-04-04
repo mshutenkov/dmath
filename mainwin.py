@@ -602,7 +602,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_btn_p_fac_released(self):
         try:
             p1 = self.get_p_p(1)
-            result = polynom.FAC_P_N(p1)
+            result = polynom.FAC_P_Q(p1)
             self.add_history_record('Fac(%s) = %s' % (
                 pretty.polynom(p1),
                 pretty.rational(result),
@@ -641,7 +641,7 @@ class MainWindow(QtWidgets.QMainWindow):
             p1 = self.get_p_p(1)
             p2 = self.get_p_p(2)
             result = polynom.MOD_PP_P(p1, p2)
-            self.add_history_record('(%s) % (%s) = %s' % (
+            self.add_history_record('(%s) %% (%s) = %s' % (
                 pretty.polynom(p1),
                 pretty.polynom(p2),
                 pretty.polynom(result),
