@@ -10,6 +10,7 @@ def GCF_NN_N(number1, number2):
     one = number1
     two = number2
 
+    # Алгоритм евклида
     while NZER_N_B(two):
         two, one = MOD_NN_N(one, two), two
 

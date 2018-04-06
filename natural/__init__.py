@@ -11,8 +11,8 @@ from natural.SUB_NN_N import SUB_NN_N
 from natural.DIV_NN_Dk import DIV_NN_Dk
 from natural.SUB_NDN_N import SUB_NDN_N
 
-from natural.MOD_NN_N import MOD_NN_N
 from natural.DIV_NN_N import DIV_NN_N
+from natural.MOD_NN_N import MOD_NN_N
 from natural.GCF_NN_N import GCF_NN_N
 from natural.MUL_NN_N import MUL_NN_N
 
