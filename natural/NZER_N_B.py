@@ -2,8 +2,7 @@ def NZER_N_B(number):
     """
     N-2
     Проверка на ноль: если число не равно нулю, то True, иначе False
-    %author%, 7305
+    Степанова Анастасия, 7305
     """
-    # TODO
-    return True
+    return number[0] > 1 or number[1][0] != 0
 
