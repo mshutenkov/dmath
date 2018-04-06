@@ -3,8 +3,11 @@ def POZ_Z_D(number):
     Z-2
     Определение положительности числа (2 - положительное,
     0 - равное нулю, 1 - отрицательное)
-    %author%, 7305
+    Царёв Александр, 7305
     """
-    # TODO
-    return 0
+    if number[1] == 1 and number[2][0] == 0:
+        return 0
+    if number[0] == 0:
+        return 2
+    return 1
 
