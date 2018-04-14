@@ -12,7 +12,7 @@ def DIV_PP_P(polynom1, polynom2):
     # Степень результата = разность степеней исходных многочленов
     result_deg = polynom1[0] - polynom2[0]
     if result_deg < 0:
-        result = [result_deg, [0, common.rat_to_Q(0, 1)]]
+        result = [0, [common.rat_to_Q(0, 1)]]
     else:
         result = [result_deg, []]
         tmp = common.copy_P(polynom1)

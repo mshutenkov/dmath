@@ -9,8 +9,8 @@ def MUL_PQ_P(polynom, num):
     Мартыненко Александр, 7305
     """
     # Если умножаем на нуль
-    if num == 0:
-        result = [0, [num_to_Z(0), num_to_N(1)]]
+    if num == [num_to_Z(0), num_to_N(1)]:
+        result = [0, [[num_to_Z(0), num_to_N(1)]]]
     # Если умножаем на число, отличное от нуля
     else:
         result = [polynom[0], []]

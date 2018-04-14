@@ -9,7 +9,7 @@ def DIV_NN_N(number1, number2):
     или равное натуральное с остатком (делитель отличен от нуля)
     Сибиреков Денис, 7305
     """
-    n = common.copy_N(number1)
+    n = number1
     i = number1[0] - number2[0]
     if i < 0:
         i = 0

@@ -1,4 +1,5 @@
 from polynom import MUL_PQ_P, MUL_Pxk_P, ADD_PP_P
+from integer import POZ_Z_D
 import common
 
 

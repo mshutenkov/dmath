@@ -13,7 +13,7 @@ def DIV_NN_Dk(number1, number2, k):
     if not NZER_N_B(number2):
         raise Exception('Попытка деления на 0!')
 
-    n = common.copy_N(number1)
+    n = number1
     m = MUL_Nk_N(number2, k)
     result = 0
     while COM_NN_D(n, m) != 1:

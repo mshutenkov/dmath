@@ -1,8 +1,6 @@
 """
 Вспомогательные функции
 """
-from integer import POZ_Z_D
-
 
 def num_to_N(number):
     """
@@ -133,8 +131,9 @@ def down_p(polynom):
     Удаление нулевых старших коэффициентов
     Пока старший коэффициент равен нулю, то удаляет его и понижает степень.
     """
-
-    while POZ_Z_D(polynom[1][-1][0]) == 0 and polynom[0] > 0:
+    while polynom[1][-1][0][1] == 1 \
+            and polynom[1][-1][0][2][0] == 0 \
+            and polynom[0] > 0:
         polynom[0] -= 1
         del polynom[1][-1]
 

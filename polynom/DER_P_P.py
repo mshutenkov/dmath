@@ -11,9 +11,13 @@ def DER_P_P(polynom):
     """
 
     result = [polynom[0] - 1, []]
-    for i in range(result[0] + 1):
-        deg = TRANS_Z_Q(num_to_Z(i + 1))
-        result[1].append(MUL_QQ_Q(deg, polynom[1][i + 1]))
+    if result[0] < 0:
+        result[0] = 0
+        result[1].append([[0, 1, [0]], [1, [1]]])
+    else:
+        for i in range(result[0] + 1):
+            deg = TRANS_Z_Q(num_to_Z(i + 1))
+            result[1].append(MUL_QQ_Q(deg, polynom[1][i + 1]))
 
     return result
 
